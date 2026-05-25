@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: infotact_mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: infotact_foodapp
+    networks:
+      - infotact_net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: infotact_backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      # Set these in a .env file (see .env.example) — never hardcode secrets here
+      SPRING_DATA_MONGODB_URI: ${SPRING_DATA_MONGODB_URI}
+      APP_JWT_SECRET: ${APP_JWT_SECRET}
+      APP_JWT_EXPIRATION: ${APP_JWT_EXPIRATION:-86400000}
+      APP_CORS_ALLOWED_ORIGINS: ${APP_CORS_ALLOWED_ORIGINS:-http://localhost:3000}
+    depends_on:
+      - mongodb
+    networks:
+      - infotact_net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: infotact_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - infotact_net
+
+volumes:
+  mongodb_data:
+
+networks:
+  infotact_net:
+    driver: bridge

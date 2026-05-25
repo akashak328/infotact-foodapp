@@ -1,0 +1,8 @@
+# ============================================================
+# LOCAL DEVELOPMENT EXAMPLE — copy this to application-local.properties
+# ============================================================
+
+spring.data.mongodb.uri=mongodb://localhost:27017/infotact_foodapp
+app.jwt.secret=REPLACE_WITH_A_STRONG_SECRET_KEY_MIN_32_CHARS
+app.jwt.expiration=86400000
+app.cors.allowed-origins=http://localhost:3000
