@@ -31,7 +31,25 @@ This platform directly addresses the fragmentation problem in modern food-tech �
 > **Evaluation Requirement:** This project maintains **4 weeks of consistent daily GitHub commits** with conventional commit messages, feature branching, and Pull Request workflows — demonstrating professional engineering practices.
 
 ---
+## 📸 Screenshots
 
+### Home Page — Restaurant Discovery
+![Home Page](screenshots/home.png)
+
+### Restaurant Menu
+![Restaurant Menu](screenshots/menu.png)
+
+### Shopping Cart
+![Cart](screenshots/cart.png)
+
+### Live Order Tracking
+![Order Tracking](screenshots/tracking.png)
+
+### Restaurant Partner Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Review & Earn Points
+![Review Page](screenshots/review.png)
 ## ✨ Features
 
 ### 🔍 Geospatial Restaurant Discovery
